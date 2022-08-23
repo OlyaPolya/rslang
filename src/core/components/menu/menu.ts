@@ -51,7 +51,7 @@ export const menuItems = [
   },
   {
     className: 'audio',
-    title: 'Главная',
+    title: 'Аудиовызов',
     backgroundImage:
       'https://4.downloader.disk.yandex.ru/preview/e3e7f2f57ad61daf3ec986268095e6231c91ae864664ea4deee1c86d1121d731/inf/sbVOP2nWQrvPvIANowRG4mTHKYmg8sGxuUUZizRjJFoHvtBO16Jvt5eSAium9eOZTq9quyuUpVrkLTDK7AHDTg%3D%3D?uid=87604752&filename=iconfinder-musicmelodysoundaudio36-4105545_113821.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=87604752&tknv=v2&size=1088x1096',
     link: '##',
