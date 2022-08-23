@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+}
+
+.header {
+  background-color:#4362a7;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  &-item {
+    list-style-type: none;
+    &:hover {
+      .item-link{
+        color: rgb(241, 155, 114)
+      }
+    }
+  }
+  &-list {
+  display: flex;
+  gap: 1rem;
+  }
+  &-logo {
+    &__name{
+      margin: 0;
+      font-size: 26px;
+    }
+    &__subtitle {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+}
+
+.item {
+  &-image {
+  width: 24px;
+  height: 24px;
+  background-size: contain; 
+  }
+  &-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: 0.5s linear;
+  }
+  &-text {
+  font-size: 12px;
+ }
+}
+
+
+
