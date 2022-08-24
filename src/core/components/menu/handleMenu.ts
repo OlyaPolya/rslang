@@ -6,14 +6,6 @@ export function toggleBurgerMenu(element: HTMLElement) {
   }
 }
 
-export function openMenuItems(element: HTMLElement) { 
-  if (element.classList.contains('menu-nav__open')) {
-    element.classList.remove('menu-nav__open');
-  } else {
-    element.classList.add('menu-nav__open');
-  }
-}
-
 export function closeMenu(element: HTMLElement) {
   const parent = <HTMLElement>element.parentElement;
   if (parent.classList.contains('menu-nav__open')) {
@@ -21,4 +13,12 @@ export function closeMenu(element: HTMLElement) {
       const burgerMenu = <HTMLElement>document.querySelector('.menu-burger');
       burgerMenu.classList.remove('menu-burger__active');
   };
+}
+
+export function openMenuItems(element: HTMLElement) {
+  if (element.classList.contains('menu-nav__open')) {
+    element.classList.remove('menu-nav__open');
+  } else {
+    element.classList.add('menu-nav__open');
+  }
 }

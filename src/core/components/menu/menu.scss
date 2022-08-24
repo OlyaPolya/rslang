@@ -51,8 +51,25 @@ ul {
   &-image {
   width: 24px;
   height: 24px;
-  background-size: contain; 
-
+  background-size: contain;
+  &__main{
+    background-image: url('/src/assets/icons/main.png');
+  }
+  &__textbook{
+    background-image: url('/src/assets/icons/textbook.png');
+  }
+  &__audio {
+    background-image: url('/src/assets/icons/audio.png');
+  }
+  &__sprint{
+    background-image: url('/src/assets/icons/sprint.png');
+  }
+  &__statistics{
+    background-image: url('/src/assets/icons/statistics.png');
+  }
+  &__entry{
+    background-image: url('/src/assets/icons/entry.png');
+  }
   }
   &-link {
   display: flex;
