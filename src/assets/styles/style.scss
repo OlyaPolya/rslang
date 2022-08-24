@@ -1,0 +1,411 @@
+
+
+body{
+    margin: auto;
+    line-height: 1.6;
+    font-family: "Roboto", sans-serif;
+    }
+    
+    /*--------------------------------Header------------------------------------- */
+    
+    .header{
+      width: 100%;
+      height: 64px;
+      background: #7a9ce7;
+      color: black;
+      font-size: 1rem;
+    position: fixed;
+     z-index: 100;
+     
+    }
+    
+    .line{
+      position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        
+    }
+    .contener{
+          position: relative;
+          bottom: -50px;
+          float: right;
+          margin-right: 50px;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropbtn {
+      background-color: inherit;
+      padding: 1rem;
+      border: none;
+      margin: 0 0.5rem 0 0.5rem;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 10rem;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border: 1px solid;
+        border-radius: 12px;
+        background-image: linear-gradient(
+              to bottom,
+              #AFEEEE,
+              #B0E0E6
+            );
+          border: 2px solid black;
+    }
+    
+    .dropdown-content a{
+        color: black;
+        font-weight: bold;
+        padding: 1rem 1rem;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropbtn a {
+        display: block;
+    }
+    
+    
+    .dropdown-content a:hover{
+      color: rgba(246, 28, 32, 1);}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {
+      cursor: pointer;
+      text-decoration: underline;
+      color:black;
+    }
+    
+    .dropdown img {
+      width: 4rem;
+      height: 4rem;
+      margin: 2rem 0.6rem -10px 3rem;
+    }
+    
+    h3.dropdown{
+        font-size: 2.3rem;
+        font-weight: 600;
+        
+    }
+    
+    .button-input {
+    background-color: inherit;
+    color: rgba(246, 28, 32, 1);
+    border: 1px solid rgba(231, 239, 240, 0.974);
+    border-radius: 20px;
+    min-width: 80px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.75;
+    padding: 6px 16px;
+    }
+    
+    .button-input:hover{background-color: rgba(220, 239, 243, 0.533);
+    cursor: pointer;}
+    
+    .button-input a {
+    color: rgba(231, 239, 240, 0.974);
+    }
+    
+    a {
+    text-decoration: none;
+    color: #232323;
+    cursor: pointer;
+    }
+    
+    /*--------------------------------Section1------------------------------------- */
+    
+    #section1{
+      background: #e9f5f7;
+      display: flex ;
+    
+    }
+    
+    #section1 img{
+      width: 750px;
+      height: 600px;
+      grid-area: pic;
+    }
+    
+    .text{
+      grid-area: lozung;
+      margin: 12rem 0 0 155px;
+      font-size: 45px;
+    }
+    .text-title1{
+      color: rgb(141, 141, 141);
+      font-size: 20px;
+    }
+    .text-title2{
+        font-size: 20px;
+    }
+    
+    
+    
+    
+    
+    /*--------------------------------Section2------------------------------------- */
+    
+    .new-word{
+    background: #fbfcfe;
+    }
+    
+    .dividing-line {
+    flex-direction: row;
+      margin: auto;
+      padding: 40px 40px 0px 40px;
+    }
+    
+    .square{padding-bottom: 40px;}
+    
+    .grey-line {
+      border-bottom: 2px solid #e5e5e5;
+      margin: 0 auto;
+    }
+    
+    .grey-line, .dividing-line {
+      display: flex;
+      max-width: 1065px;
+    }
+    
+    .dividing-line-background0 {
+      background-image: url(src/assets/img/graduating-student.png);
+      height: 110px;
+      min-width: 200px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-grow: 0;
+      margin-left: 48px;
+    }
+    
+    .dividing-line-background {
+      background-image: url(src/assets/src/assets/img/student.png);
+      height: 201px;
+      min-width: 185px;
+      background-repeat: no-repeat;
+      margin-right: 48px;
+      flex-grow: 0;
+      background-size: contain;
+    }
+    
+    
+    .dividing-line-background1 {
+      background-image: url(src/assets/img/dictionary.png);
+      height: 130px;
+      min-width: 200px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-grow: 0;
+      margin-left: 48px;
+    }
+    
+    .dividing-line-background2 {
+      background-image: url(src/assets/img/statistics.png);
+      height: 201px;
+      min-width: 110px;
+      background-repeat: no-repeat;
+      margin-right: 48px;
+      flex-grow: 0;
+      background-size: contain;
+    }
+    
+    
+    .dividing-line-background3 {
+      background-image: url(src/assets/img/github-big.svg);
+      height: 130px;
+      min-width: 200px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-grow: 0;
+      margin-left: 48px;
+    }
+    
+    
+    .headline {
+      color: #3c3c3c;
+      font-size: 24px;
+      line-height: 26px;
+      margin: 0 0 25px;
+    }
+    
+    .dividing-line-text {
+      color: #777;
+      flex-grow: 1;
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .dividing-line-opisanie {
+      color: rgba(246, 28, 32, .7);
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    
+    .dividing-line-opisanie:hover {color: rgba(246, 28, 32, 1);}
+    
+      
+    
+    /*-------------------------------Cards------------------------------------- */
+    
+    .comand{
+      position: relative;
+        }
+      
+      .comand ul{
+      display: grid;
+      /* grid-template-areas:
+      "a a a"; */
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0 100px;
+      }
+      
+      .comand li{
+      text-align: -webkit-center;
+      align-self: center;
+      padding-bottom: 50px;
+      }
+      
+      .comand li:first-of-type {
+        grid-column: 1 / -1;
+      }
+      
+      .upper{
+        padding: 30px 0 50px;
+        margin: auto;
+      }
+      
+      .text-opisanie{
+        margin: auto;
+        word-wrap: break-word
+      }
+    
+      li{
+        list-style-type: none;
+      }
+    
+      li .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        border-radius: 20px;
+      }
+      
+      li .card:hover{
+          box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.4);
+      }
+      
+      li .card img{
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+      }
+      
+      li .web img{
+        height: 30px;
+        width: 30px;
+      }
+      
+      li .web{
+        margin: 10px 0;
+        padding-bottom: 20px;
+      }
+      
+      li .title {
+        color: grey;
+        font-size: 18px;
+        padding-bottom: 10px;
+      }
+      
+      li a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+      }
+      
+      
+      .toDo{
+        min-height: 55px;
+        padding: 0 15px;
+      }
+      
+      /*--------------------------------Footer------------------------------ */
+    .footer {
+       position: relative;
+       width: 100%;
+       background: #4a79de;
+       height: 50px;
+    }
+    
+    .footer-left {
+      color: black;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    
+    .footer-center{
+      color: black;
+      font-size: 15px;
+      display: flex;   
+    } 
+    
+    .footer-name{
+      margin-left: 30px;
+    }
+    
+    
+    
+    /* -----------------резиновая страница---------------------------- */
+    
+    @media (max-width: 1280px) {
+      #section1{
+        display: flex;
+        flex-direction: column;
+      }
+      .line {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100%;
+          text-align: center;
+      }
+    
+      .contener{display: none;}
+    }
+       
+    
+    @media (max-width: 768px) {
+      .comand ul {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer-left{
+        display: flex;
+        flex-direction: column;
+        
+      }
+    }
