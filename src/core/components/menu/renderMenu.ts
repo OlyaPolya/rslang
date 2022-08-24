@@ -8,6 +8,11 @@ interface Item {
 export function renderMenu(menuItems: Array<Item>) {
   const html = `
     <div class="menu">
+      <div class="menu-burger">
+          <span class="line line-first"></span>
+          <span class="line line-second"></span>
+          <span class="line line-third"></span>
+        </div>
       <div class="menu-logo">
         <h1 class="menu-logo__name">RS-Lang</h1>
         <p class="menu-logo__subtitle">Learn English easily</p>
