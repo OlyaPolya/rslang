@@ -1,5 +1,3 @@
-import '../../../d.ts'
-
 export const menuItems = [
   {
     className: 'main',

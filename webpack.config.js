@@ -12,7 +12,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/[name][hash][ext][query]',
     filename: 'bundle.js',
+    clean: true,
   },
   module: {
     rules: [
@@ -33,6 +35,10 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
       },
     ],
   },

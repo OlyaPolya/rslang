@@ -1,4 +1,5 @@
 import './assets/styles/style.scss';
+import './index.html';
 import { renderMenu, menuItems} from './core/components/menu/renderMenu';
 import { toggleBurgerMenu, openMenuItems, closeMenu } from './core/components/menu/handleMenu';
 
