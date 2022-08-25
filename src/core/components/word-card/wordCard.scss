@@ -1,0 +1,109 @@
+.card {
+  p {
+    margin: 0;
+  }
+  color: #264653;
+  display: flex;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+
+  &-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    width: 30%;
+    & img{
+      width: 100%;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  &-body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    flex-grow: 1;
+    & .body-title {
+      display: flex;
+      flex-direction: column;
+      & .title-word {
+        color: #E76F51;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      & .title-translate{
+          margin-top: 5px;
+          font-size: 1.1rem;
+          font-weight: bold;
+        }
+
+    }
+  }
+
+  &-button {
+    margin-top: 15px;
+    & button {
+      margin-right: 10px;
+      width: 90px;
+      height: 30px;
+      border: 0;
+      border-radius: 16px;
+      background-color: #F4A261;
+      color: #264653;
+      transition: 0.3s all;
+      &:hover {
+        cursor: pointer;
+        background-color: #E76F51;
+      }
+    }
+  }
+}
+
+.title-transcription{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  gap: 10px;
+  & .transcription-text{
+    font-size: 1rem;
+    margin: 0;
+  }
+  & .transcription-audio{
+    width: 25px;
+    height: 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
+}
+
+.card-description {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0 10px;
+  gap: 15px;
+  & .meaning-title {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  & .example-title{
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  & .title-audio{
+    width: 25px;
+    height: 25px;
+  }
+}
