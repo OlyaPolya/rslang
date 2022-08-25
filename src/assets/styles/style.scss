@@ -28,7 +28,7 @@ body{
     }
     .contener{
           position: relative;
-          bottom: -40px;
+          bottom: -50px;
           float: right;
           margin-right: 50px;
     }
@@ -176,9 +176,13 @@ body{
       margin: 0 auto;
     }
     
-    .grey-line, .dividing-line {
+    .grey-line, .dividing-line,.grey-line-end {
       display: flex;
       max-width: 1065px;
+    }
+    .grey-line-end {
+      border-bottom: 2px solid #e5e5e5;
+      margin: 30px auto;
     }
     
     .dividing-line-background0 {
@@ -230,7 +234,7 @@ body{
       background-repeat: no-repeat;
       background-size: contain;
       flex-grow: 0;
-      margin-left: 48px;
+      margin-left: 148px;
     }
     
     
@@ -264,7 +268,7 @@ body{
     
       
     
-    /*-------------------------------Cards------------------------------------- */
+    /*-------------------------------Comand------------------------------------- */
     
     .comand{
       position: relative;
@@ -272,8 +276,6 @@ body{
       
       .comand ul{
       display: grid;
-      /* grid-template-areas:
-      "a a a"; */
       grid-template-columns: 1fr 1fr 1fr;
       padding: 0 100px;
       }
