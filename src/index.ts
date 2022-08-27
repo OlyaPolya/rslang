@@ -1,3 +1,3 @@
 import './assets/styles/style.scss';
-import './core/components/word-card/wordCard.scss';
+import './pages/textbook/index'
 import './index.html';

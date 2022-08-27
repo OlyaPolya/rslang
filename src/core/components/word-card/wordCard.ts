@@ -1,23 +1,23 @@
-interface CardBody {
-  id: 'string';
-  group: 0;
-  page: 0;
-  word: 'string';
-  image: 'string';
-  audio: 'string';
-  audioMeaning: 'string';
-  audioExample: 'string';
-  textMeaning: 'string';
-  textExample: 'string';
-  transcription: 'string';
-  wordTranslate: 'string';
-  textMeaningTranslate: 'string';
-  textExampleTranslate: 'string';
+
+import PlayImg from '../../../assets/icons/playaudio.png';
+export interface CardBody {
+  id: string;
+  group: number;
+  page: number;
+  word: string;
+  image: string;
+  audio: string;
+  audioMeaning: string;
+  audioExample: string;
+  textMeaning: string;
+  textExample: string;
+  transcription: string;
+  wordTranslate: string;
+  textMeaningTranslate: string;
+  textExampleTranslate: string;
 }
-
-let isPlay = false;
-
-export function createCardWord(card: CardBody, isAuthorized: boolean){
+export const path = 'https://easy-english-rss.herokuapp.com/';
+export function createCardWord(card: CardBody, isAuthorized: boolean) {
   let style: string = '';
   if (!isAuthorized) {
     style = 'style="display:none"';
@@ -26,7 +26,7 @@ export function createCardWord(card: CardBody, isAuthorized: boolean){
   <div class="card" data-id="${card.id}">
     <div class="card-image">
       <div class="image-round">
-        <img src="${card.image}" alt="${card.word}">
+        <img src="${path}${card.image}" alt="${card.word}">
       </div>   
     </div>
     <div class="card-body">
@@ -34,7 +34,12 @@ export function createCardWord(card: CardBody, isAuthorized: boolean){
           <p class="title-word">${card.word}</p>
           <div class="title-transcription">
             <p class="transcription-text">${card.transcription}</p>
-            <img class="transcription-audio" src="./assets/icons/playaudio.png" alt="${card.word}" data-audio="${card.audio}">
+            <div class="transcription-audio audio-block">
+              <img class="audio-image" src="${PlayImg}" alt="play button">
+              <audio class="audio-music" src="${path}${card.audio}"></audio>
+              <audio class="audio-music" src="${path}${card.audioMeaning}"></audio>
+              <audio class="audio-music" src="${path}${card.audioExample}"></audio>
+            </div>
           </div>
           <div class="title-translate">
             <p class="translate-text">${card.wordTranslate}</p>
@@ -44,26 +49,23 @@ export function createCardWord(card: CardBody, isAuthorized: boolean){
         <div class="description-meaning">
           <div class="meaning-title">
               <p class="title-text">Значение слова:</p>
-              <img class="title-audio title-audio__meaning" src="./assets/icons/playaudio.png" alt="${card.word}" data-audioMeaning="${card.audioMeaning}">
           </div>
           <p class="meaning-text">${card.textMeaning}</p>
-          <p class="meaning-translate">${card.textMeaningTranslate}</p>
+          <p class="meaning-translate">- ${card.textMeaningTranslate}</p>
         </div>
         <div class="description-example">
           <div class="example-title">
               <p class="title-text">Пример использования:</p>
-              <img class="title-audio title-audio-example" src="./assets/icons/playaudio.png" alt="${card.word}" data-audioExample="${card.audioExample}">
           </div>
           <p class="example-text">${card.textExample}</p>
-          <p class="example-translate"> ${card.textExampleTranslate}</p>
+          <p class="example-translate">- ${card.textExampleTranslate}</p>
         </div>
         <div class="card-button" ${style}>
           <button class="button-mark" >Сложное</button>
-          <button class="button-delete">Удалить</button>
+          <button class="button-delete">Изученное</button>
         </div>
         </div>
       </div>
-    </div>
   </div>
   `;
 }

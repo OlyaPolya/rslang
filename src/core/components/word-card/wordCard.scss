@@ -1,5 +1,6 @@
 .card {
   p {
+    font-size: 0.8rem;
     margin: 0;
   }
   color: #264653;
@@ -26,9 +27,9 @@
   &-body {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 15px;
-    margin-right: 5px;
+    margin-right: 10px;
     flex-grow: 1;
     & .body-title {
       display: flex;
@@ -40,21 +41,25 @@
       }
       & .title-translate{
           margin-top: 5px;
-          font-size: 1.1rem;
+          
+          & .translate-text{
+            font-size: 1rem;
           font-weight: bold;
+          }
         }
 
     }
   }
 
   &-button {
-    margin-top: 15px;
+    margin: 0 auto;
     & button {
       margin-right: 10px;
-      width: 90px;
+      width: 80px;
       height: 30px;
       border: 0;
       border-radius: 16px;
+      font-size: 0.7rem;
       background-color: #F4A261;
       color: #264653;
       transition: 0.3s all;
@@ -69,26 +74,35 @@
 .title-transcription{
   display: flex;
   align-items: center;
-  margin-top: 5px;
-  gap: 10px;
+  gap: 5px;
   & .transcription-text{
     font-size: 1rem;
     margin: 0;
   }
-  & .transcription-audio{
+}
+
+p .title-text {
+  font-size: 0.7rem;
+}
+
+.audio-block{
     width: 25px;
     height: 25px;
     &:hover {
       cursor: pointer;
     }
-  }
-  
+    & .audio-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
 }
 
 .card-description {
   display: flex;
   flex-direction: column;
-  margin: 15px 0 10px;
+  margin: 10px 0 10px;
   gap: 15px;
   & .meaning-title {
     display: flex;
