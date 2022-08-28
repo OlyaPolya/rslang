@@ -1,15 +1,15 @@
 .card {
   p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin: 0;
   }
   color: #264653;
   display: flex;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
-  box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow:  2px 2px 2px 0.5px rgba(0, 0, 0, 0.1);
   gap: 20px;
-
+  border: 0.5px solid rgb(248, 245, 245);
   &-image{
     display: flex;
     justify-content: center;
@@ -43,7 +43,7 @@
           margin-top: 5px;
           
           & .translate-text{
-            font-size: 1rem;
+            font-size: 1.1rem;
           font-weight: bold;
           }
         }
@@ -55,11 +55,11 @@
     margin: 0 auto;
     & button {
       margin-right: 10px;
-      width: 80px;
-      height: 30px;
+      width: 90px;
+      height: 40px;
       border: 0;
       border-radius: 16px;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       background-color: #F4A261;
       color: #264653;
       transition: 0.3s all;

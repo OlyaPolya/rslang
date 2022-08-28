@@ -1,4 +1,3 @@
-
 import PlayImg from '../../../assets/icons/playaudio.png';
 export interface CardBody {
   id: string;

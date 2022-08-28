@@ -1,0 +1,89 @@
+
+.textbook {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin-top: 10px;
+  &-parts {
+    & .parts {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3px;
+      & .part {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 130px;
+        height: 50px;
+        font-size: 0.9rem;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: 0.3s all ease;
+        &:hover {
+          filter: brightness(1.15);
+        }
+        &-beginner {
+          background-color: #E9C46A;
+        }
+        &-elementary {
+          background-color: #F4A261;
+        }
+        &-intermediate {
+          background-color: #E76F51;
+        }
+        &-upper {
+          background-color: #2A9D8F;
+        }
+        &-advanced {
+          background-color: #237a70;
+        }
+        &-proficiency {
+          background-color: #416979;
+        }
+        &-complicated {
+          background-color: #2f5564;
+        }
+
+        
+      }
+      
+    }
+  }
+}
+
+
+
+.textbook-body {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  gap: 10px;
+  & .body-pages {
+    & .pages{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      & .page{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #E9C46A;
+        transition: 0.3s all ease;
+        cursor: pointer;
+        &:hover {
+          filter: brightness(1.1);
+        }
+      }
+    }
+  }
+}
+
+.body-words-list {
+  width: 80%;
+}
