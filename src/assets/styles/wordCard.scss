@@ -1,4 +1,5 @@
 .card {
+  margin: 10px 0;
   p {
     font-size: 1rem;
     margin: 0;
@@ -34,11 +35,26 @@
     & .body-title {
       display: flex;
       flex-direction: column;
-      & .title-word {
+      & .title-header{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        & .header-word {
         color: #E76F51;
         font-weight: bold;
         font-size: 1.5rem;
+        }
+        & .header-complicate-mark {
+          display: none;
+          &__active {
+          display: block;
+          padding: 5px;
+          color: rgba(255, 0, 0, 0.4);
+          border: 0.5px solid rgba(255, 0, 0, 0.3);
+          }
+        }
       }
+      
       & .title-translate{
           margin-top: 5px;
           

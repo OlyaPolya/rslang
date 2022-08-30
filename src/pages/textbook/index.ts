@@ -1,33 +1,46 @@
-import { playAudio } from '../../core/components/word-card/handleAudio';
+import { playAudio } from '../../core/components/textbook/handleAudio';
 import '../../assets/styles/wordCard.scss';
-import '../../assets/styles/textbookMenu.scss';
-import { createCardWord, CardBody } from '../../core/components/word-card/wordCard';
-import '../../core/components/word-card/textbookMenu'
+//import '../../assets/styles/textbookMenu.scss';
+import { renderCardLayout, CardBody } from '../../core/components/textbook/wordCard';
+import '../../core/components/textbook/textbookPage'
+import {getWordsList} from '../../core/components/serverMethods/serverMethods'
+import {getTextbookPageLayout} from '../../core/components/textbook/textbookPage'
+import '../../assets/styles/textbookPage.scss';
+import { setUserInfo, getUserInfo } from '../../core/components/textbook/localStorage';
 
-const body = <HTMLElement>document.querySelector('.body-words-list');
-body.innerHTML = createCardWord(
-  {
-    id: '5e9f5ee35eb9e72bc21af70e',
-    group: 1,
-    page: 1,
-    word: 'consist',
-    image: 'files/02_0623.jpg',
-    audio: 'files/02_0623.mp3',
-    audioMeaning: 'files/02_0623_meaning.mp3',
-    audioExample: 'files/02_0623_example.mp3',
-    textMeaning: 'To <i>consist</i> of certain is to be made of parts or things them.',
-    textExample: 'Today’s choices for lunch <b>consisted</b> of pizza, hamburgers, and hot dogs.',
-    transcription: '[kənsíst]',
-    textExampleTranslate: 'Сегодняшний выбор на обед состоял из пиццы, гамбургеров и хот-догов',
-    textMeaningTranslate: 'Быть состоящим из определенного означает быть составленным из частей или вещей из них',
-    wordTranslate: 'состоят',
-  },
-  true
-);
+function renderTextbookPage(level: number, page: number, isAuthorized: string) {
+  document.body.innerHTML = getTextbookPageLayout(level);
 
-  const audioBlock: NodeListOf<Element> = document.querySelectorAll('.audio-image');
-  playAudio(audioBlock);
+  const wordListLayout = <HTMLElement>document.querySelector('.body-words-list');
+
+  const wordsList = getWordsList(level, page);
+  wordsList.then((list) => {
+    list.forEach((word) => {
+      wordListLayout.insertAdjacentHTML("beforeend", renderCardLayout(word, isAuthorized));
+    })
+
+    const levelBtns = document.querySelectorAll('.part');
+    levelBtns.forEach((btn) => {
+      btn.addEventListener('click', (item) => {
+        const clickedElement = <HTMLElement>item.target;
+        const level = clickedElement.dataset;       
+        setUserInfo(level);
+        const { textbookPage, textbookLevel, isAuthorized } = getUserInfo();
+        console.log('textbookLevel', textbookLevel);
+        // renderTextbookPage(textbookLevel, textbookPage, isAuthorized);
+        
+      })
+    })
+
+  });
+
+}
 
 
+function startApp() {
+  //localStorage.clear
+  const { textbookPage, textbookLevel, isAuthorized } = getUserInfo();
+  renderTextbookPage(textbookLevel, textbookPage, isAuthorized);
+}
 
-  
+ startApp();

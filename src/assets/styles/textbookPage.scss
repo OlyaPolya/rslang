@@ -59,11 +59,16 @@
 
 .textbook-body {
   display: flex;
-  margin-top: 20px;
+  margin: 20px 0;
   justify-content: center;
-  gap: 10px;
-
+  gap: 20px;
+  .body-words-list {
+  width: 70%;
+  }
   & .body-pages {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     & .pages{
       display: flex;
       flex-direction: column;
@@ -75,7 +80,6 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: #E9C46A;
         transition: 0.3s all ease;
         cursor: pointer;
         &:hover {
@@ -83,9 +87,24 @@
         }
       }
     }
+    & .body-btn-up{
+      position: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #E76F51;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      bottom: 16px;
+      right: 16px;
+        transition: 0.3s all ease;
+        cursor: pointer;
+        &:hover {
+          filter: brightness(1.1);
+        }
+    }
   }
 }
 
-.body-words-list {
-  width: 80%;
-}

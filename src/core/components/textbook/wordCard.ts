@@ -16,9 +16,9 @@ export interface CardBody {
   textExampleTranslate: string;
 }
 export const path = 'https://easy-english-rss.herokuapp.com/';
-export function createCardWord(card: CardBody, isAuthorized: boolean) {
+export function renderCardLayout(card: CardBody, isAuthorized: string) {
   let style: string = '';
-  if (!isAuthorized) {
+  if (isAuthorized === 'none') {
     style = 'style="display:none"';
   }
   return `
@@ -30,7 +30,10 @@ export function createCardWord(card: CardBody, isAuthorized: boolean) {
     </div>
     <div class="card-body">
       <div class="body-title">
-          <p class="title-word">${card.word}</p>
+          <div class="title-header">
+            <p class="header-word">${card.word}</p>
+            <span class="header-complicate-mark">Сложное слово</span>
+          </div>
           <div class="title-transcription">
             <p class="transcription-text">${card.transcription}</p>
             <div class="transcription-audio audio-block">
@@ -60,8 +63,8 @@ export function createCardWord(card: CardBody, isAuthorized: boolean) {
           <p class="example-translate">- ${card.textExampleTranslate}</p>
         </div>
         <div class="card-button" ${style}>
-          <button class="button-mark" >Сложное</button>
-          <button class="button-delete">Изученное</button>
+          <button class="button-mark" data-id="${card.id}>Сложное</button>
+          <button class="button-delete" data-id="${card.id}>Изученное</button>
         </div>
         </div>
       </div>
