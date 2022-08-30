@@ -6,11 +6,10 @@ import '../../core/components/textbook/textbookPage'
 import {getWordsList} from '../../core/components/serverMethods/serverMethods'
 import {getTextbookPageLayout} from '../../core/components/textbook/textbookPage'
 import '../../assets/styles/textbookPage.scss';
-import { setUserInfo, getUserInfo } from '../../core/components/textbook/localStorage';
+import { setBasicUserInfo, setUserInfo, getUserInfo } from '../../core/components/textbook/localStorage';
 
 function renderTextbookPage(level: number, page: number, isAuthorized: string) {
   document.body.innerHTML = getTextbookPageLayout(level);
-
   const wordListLayout = <HTMLElement>document.querySelector('.body-words-list');
 
   const wordsList = getWordsList(level, page);
@@ -23,24 +22,44 @@ function renderTextbookPage(level: number, page: number, isAuthorized: string) {
     levelBtns.forEach((btn) => {
       btn.addEventListener('click', (item) => {
         const clickedElement = <HTMLElement>item.target;
-        const level = clickedElement.dataset;       
+        const level = clickedElement.dataset;  
+             
         setUserInfo(level);
         const { textbookPage, textbookLevel, isAuthorized } = getUserInfo();
-        console.log('textbookLevel', textbookLevel);
-        // renderTextbookPage(textbookLevel, textbookPage, isAuthorized);
+        renderTextbookPage(textbookLevel, textbookPage, isAuthorized);
         
       })
     })
 
+    const pageBtns = document.querySelectorAll('.page');
+    pageBtns.forEach((btn) => {
+      btn.addEventListener('click', (item) => {
+        const clickedElement = <HTMLElement>item.target;
+        const page = clickedElement.dataset;
+
+        setUserInfo(page);
+        const { textbookPage, textbookLevel, isAuthorized } = getUserInfo();
+        renderTextbookPage(textbookLevel, textbookPage, isAuthorized);
+      });
+    });
+
+    const btnUp = <HTMLElement>document.querySelector('.body-btn-up');
+    btnUp.addEventListener('click', () => {
+      const scrollTop = window.pageYOffset;
+      window.scrollBy(0, -scrollTop);
+    })
+
+    const btnPlay = document.querySelectorAll('.audio-image');
+    playAudio(btnPlay);
   });
 
 }
 
 
 function startApp() {
-  //localStorage.clear
+  setBasicUserInfo();
   const { textbookPage, textbookLevel, isAuthorized } = getUserInfo();
   renderTextbookPage(textbookLevel, textbookPage, isAuthorized);
 }
 
- startApp();
+startApp();

@@ -7,6 +7,7 @@ export function setUserInfo(parametr: object) {
   }
   if (keyToStorage === 'level') {
     localStorage.setItem('textbookLevel', valueOfKeyToStorage);
+    localStorage.setItem('textbookPage', '0');
 
   }
   if (keyToStorage === 'isAuthorized' && valueOfKeyToStorage !== 'none') {
@@ -15,17 +16,20 @@ export function setUserInfo(parametr: object) {
   
 }
 
-export function getUserInfo() {
-  if (!localStorage.pageTextbook) {
-    localStorage.setItem('textbookPage', '1');
+export function setBasicUserInfo() {
+  if (!('pageTextbook' in localStorage)) {
+    localStorage.setItem('textbookPage', '0');
+
+  if (!('textbookLevel' in localStorage)) {
+    localStorage.setItem('textbookLevel', '0');
   }
-  if (!localStorage.levelTextbook) {
-    localStorage.setItem('textbookLevel', '1');
-  }
-  if (!localStorage.isAuthorized) {
+  if (!('isAuthorized' in localStorage)) {
     localStorage.setItem('isAuthorized', 'none');
   }
+ }
+}
 
+export function getUserInfo() {
   const page: number = Number(localStorage.getItem('textbookPage'));
   const level: number = Number(localStorage.getItem('textbookLevel'));
   const isAuthorized: string = localStorage.getItem('textbookLevel') as string;

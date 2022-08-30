@@ -14,13 +14,13 @@
       gap: 3px;
       & .part {
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 130px;
         height: 50px;
         font-size: 0.9rem;
         border-radius: 16px;
+        text-align: center;
         cursor: pointer;
         transition: 0.3s all ease;
         &:hover {
@@ -65,7 +65,7 @@
   .body-words-list {
   width: 70%;
   }
-  & .body-pages {
+  & .body-pages-list {
     display: flex;
     flex-direction: column;
     position: relative;
