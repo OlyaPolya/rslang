@@ -16,9 +16,17 @@ export interface CardBody {
   textExampleTranslate: string;
 }
 export const path = 'https://easy-english-rss.herokuapp.com/';
-export function renderCardLayout(card: CardBody, isAuthorized: string) {
+export function renderCardLayout(card: CardBody, userId: string, markWord: string, level?: number) {
+  let markHardWord: string = '';
+  let btnHardDeleteSign: string = 'Сложное';
+  let btnHardDeleteClass: string = 'button-hard';
+  if (level === 6) {
+    markHardWord = 'header-complicate-mark__active';
+    btnHardDeleteSign = 'Удалить';
+    btnHardDeleteClass = 'button-delete';
+  }
   let style: string = '';
-  if (isAuthorized === 'none') {
+  if (userId === 'none') {
     style = 'style="display:none"';
   }
   return `
@@ -32,7 +40,8 @@ export function renderCardLayout(card: CardBody, isAuthorized: string) {
       <div class="body-title">
           <div class="title-header">
             <p class="header-word">${card.word}</p>
-            <span class="header-complicate-mark">Сложное слово</span>
+            <span class="header-complicate-mark ${markHardWord}">Сложное слово</span>
+            <span class="learned-mark">Изученное слово</span>
           </div>
           <div class="title-transcription">
             <p class="transcription-text">${card.transcription}</p>
@@ -63,8 +72,8 @@ export function renderCardLayout(card: CardBody, isAuthorized: string) {
           <p class="example-translate">- ${card.textExampleTranslate}</p>
         </div>
         <div class="card-button" ${style}>
-          <button class="button-mark" data-id="${card.id}>Сложное</button>
-          <button class="button-delete" data-id="${card.id}>Изученное</button>
+          <button class="button ${btnHardDeleteClass}" data-idword="${card.id}">${btnHardDeleteSign}</button>
+          <button class="button button-learned" data-idword="${card.id}">Изученное</button>
         </div>
         </div>
       </div>
