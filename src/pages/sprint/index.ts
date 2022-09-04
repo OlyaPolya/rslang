@@ -1,10 +1,10 @@
-let diffGroup;
+let diffGroup: number;
 let wordList = [];
-let sprintPoints = 0;
-let audioAutoplay = true;
+let sprintPoints: number = 0;
+let audioAutoplay: boolean = true;
 let learnedWords = [];
 let unlearnedWords = [];
-let countCorrectAnswers = 0;
+let countCorrectAnswers: number = 0;
 let addedPoints = 10;
 
 const divDiff = document.createElement('div');
@@ -59,7 +59,7 @@ divSet.innerHTML = `
   </div>
 `;
 
-const main = document.querySelector('.main');
+const main = <HTMLElement>document.querySelector('.main');
 main.append(divDiff);
 
 const diffLevels = document.querySelectorAll('.diff-level');
@@ -94,7 +94,7 @@ function playSprint() {
 };
 
 function getRandomNum(n) {
-  return randomNum = Math.floor((Math.random() * n) + 1);
+  return Math.floor((Math.random() * n) + 1);
 };
 
 async function getWords() {
@@ -113,18 +113,18 @@ async function getWords() {
 
 // Timer
 
-function runTimer(time) {  
-  let i = 0;
-  let finalOffset = 440;
-  let step = finalOffset/time;
-  let timeCaption = document.querySelector('.value-timer');
+function runTimer(time: number) {  
+  let i: number = 0;
+  let finalOffset: number = 440;
+  let step: number = finalOffset/+time;
+  let timeCaption = <HTMLElement>document.querySelector('.value-timer');
   let circle = document.querySelector('.circle-animation').style;
 
   circle.strokeDashoffset = 0;
-  timeCaption.innerText = time;
+  timeCaption.innerText = time.toString();
 
   let interval = setInterval( () => {
-    timeCaption.innerText = time - i;
+    timeCaption.innerText = (time - i).toString();
     if ( i++ == time ) {
       clearInterval( interval );
       } else {
@@ -136,6 +136,7 @@ function runTimer(time) {
 function renderSprint() {  
   console.log(`Количество слов ${wordList.length}`);
   let word = wordList[getRandomNum(120)]
+  let wordTranslate: string;
   let isRightAnswer = getRandomNum(2);
   if (isRightAnswer === 1) wordTranslate = word.wordTranslate
   else wordTranslate = wordList[getRandomNum(120)].wordTranslate;
@@ -211,14 +212,13 @@ function endSprint() {
   renderResult();
 };
 
-
 function addSwitchSound() {
-  const switchSound =  document.querySelector('.svg-music');  
+  const switchSound =  <HTMLElement>document.querySelector('.svg-music');  
   switchSound.addEventListener('click', () => (audioAutoplay) ? audioAutoplay = false : audioAutoplay = true);
 };
 
-function playSound(path) {
-  audio = new Audio();
+function playSound(path: string) {
+  const audio = new Audio();
   audio.src = path;
   audio.autoplay = audioAutoplay;
 }
