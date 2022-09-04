@@ -1,9 +1,26 @@
+interface Word {
+  "id": "string",
+  "group": "number",
+  "page": "number",
+  "word": "string",
+  "image": "string",
+  "audio": "string",
+  "audioMeaning": "string",
+  "audioExample": "string",
+  "textMeaning": "string",
+  "textExample": "string",
+  "transcription": "string",
+  "wordTranslate": "string",
+  "textMeaningTranslate": "string",
+  "textExampleTranslate": "string"  
+}
+
 let diffGroup: number;
-let wordList = [];
+let wordList: Word[] = [];
 let sprintPoints: number = 0;
 let audioAutoplay: boolean = true;
-let learnedWords = [];
-let unlearnedWords = [];
+let learnedWords: Word[] = [];
+let unlearnedWords: Word[] = [];
 let countCorrectAnswers: number = 0;
 let addedPoints = 10;
 
@@ -62,7 +79,7 @@ divSet.innerHTML = `
 const main = <HTMLElement>document.querySelector('.main');
 main.append(divDiff);
 
-const diffLevels = document.querySelectorAll('.diff-level');
+const diffLevels = <NodeList>document.querySelectorAll('.diff-level');
 diffLevels.forEach((item) => item.addEventListener('click', startSprint));
 
 const divSprint = document.createElement('div');
@@ -71,8 +88,8 @@ divSprint.classList.add('sprint');
 const divResult = document.createElement('div');
 divResult.classList.add('result');
 
-function startSprint(e) {
-  diffGroup = +e.target.innerHTML;  
+function startSprint(event: Event) {
+  diffGroup = +(event.target as HTMLElement).innerHTML;  
   console.log(`Сложность ${diffGroup}`);
   for (let i=0; i<7; i++) {
     getWords();
@@ -90,11 +107,12 @@ function playSprint() {
   renderSprint();
   addSwitchSound();
   runTimer(60);
-  setTimeout(endSprint, 20000);  
+  setTimeout(endSprint, 61000);  
 };
 
-function getRandomNum(n) {
-  return Math.floor((Math.random() * n) + 1);
+function getRandomNum(n: number) {
+  let randomNum: number =  Math.floor((Math.random() * n) + 1);
+  return randomNum;
 };
 
 async function getWords() {
@@ -103,8 +121,7 @@ async function getWords() {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify()
+    }    
   });
   const content = await response.json();
   wordList = wordList.concat(content);  
@@ -118,9 +135,9 @@ function runTimer(time: number) {
   let finalOffset: number = 440;
   let step: number = finalOffset/+time;
   let timeCaption = <HTMLElement>document.querySelector('.value-timer');
-  let circle = document.querySelector('.circle-animation').style;
+  let circle = (<SVGGeometryElement>document.querySelector('.circle-animation')).style;
 
-  circle.strokeDashoffset = 0;
+  circle.strokeDashoffset = "0";
   timeCaption.innerText = time.toString();
 
   let interval = setInterval( () => {
@@ -128,7 +145,7 @@ function runTimer(time: number) {
     if ( i++ == time ) {
       clearInterval( interval );
       } else {
-      circle.strokeDashoffset = step * i;
+      circle.strokeDashoffset = (step * i).toString();
     };
   }, 1000 );
 };
@@ -171,15 +188,15 @@ function renderSprint() {
     } else {
       learnedWords.push(word);
       playSound('./assets/true.mp3');
-      countCorrectAnswers +=1
-      if (countCorrectAnswers === 4) {
-        addedPoints = 20;
-      } else if (countCorrectAnswers === 7) {
-        addedPoints = 40;
-      }else if (countCorrectAnswers === 10) {
-        addedPoints = 80;
-      }      
       sprintPoints += addedPoints;
+      countCorrectAnswers +=1
+      if (countCorrectAnswers === 3) {
+        addedPoints = 20;
+      } else if (countCorrectAnswers === 6) {
+        addedPoints = 40;
+      }else if (countCorrectAnswers === 9) {
+        addedPoints = 80;
+      }
     }
   });
 
@@ -192,13 +209,15 @@ function renderSprint() {
     } else {
       learnedWords.push(word);
       playSound('./assets/true.mp3');
+      sprintPoints += addedPoints;
       countCorrectAnswers +=1
       if (countCorrectAnswers === 3) {
         addedPoints = 20;
       } else if (countCorrectAnswers === 6) {
         addedPoints = 30;
-      }
-      sprintPoints += addedPoints;
+      } else if (countCorrectAnswers === 9) {
+        addedPoints = 80;
+      }      
     }
   });
 
@@ -225,7 +244,7 @@ function renderResult() {
       </div>
     </div>
     <div class="sprint-card_item answer">
-      <a href="./sprint.html"><div class="result-button">Играть ещё</div></a>
+      <a href="./index.html"><div class="result-button">Играть ещё</div></a>
       <a href="./index.html"><div class="result-button">Закрыть игру</div></a>
     </div>
   `;
