@@ -25,6 +25,8 @@ a {
   background-size: contain;
 }
 
+/* Choice of difficulty */
+
 .overlay {   
   position: fixed;
   top: 0;
@@ -74,6 +76,36 @@ a {
   color: rgb(0, 0, 145);
   cursor: pointer;
 }
+
+/* Timer */
+
+.timer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+  z-index: 5;
+}
+.value-timer {
+	width: 160px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  color: white;
+  z-index: 5; 
+}
+.svg-timer {
+	transform: rotate(-90deg);
+  z-index: 5;
+}
+.circle-animation {
+	stroke-dasharray: 440; /* this value is the pixel circumference of the circle */
+	stroke-dashoffset: 0;
+	transition: all 1s linear;
+}
+
+/* Game */
 
 .set {
   display: flex;

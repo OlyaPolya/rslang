@@ -203,3 +203,22 @@ function renderSprint() {
 
   btnAnswer.forEach((item) => item.addEventListener('click', renderSprint));
 };
+
+function endSprint() {
+  playSound('./assets/timeOut.mp3');
+  divSet.remove();
+  divSprint.remove();
+  renderResult();
+};
+
+
+function addSwitchSound() {
+  const switchSound =  document.querySelector('.svg-music');  
+  switchSound.addEventListener('click', () => (audioAutoplay) ? audioAutoplay = false : audioAutoplay = true);
+};
+
+function playSound(path) {
+  audio = new Audio();
+  audio.src = path;
+  audio.autoplay = audioAutoplay;
+}
