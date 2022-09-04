@@ -16,7 +16,7 @@ export interface CardBody {
   textExampleTranslate: string;
 }
 export const path = 'https://easy-english-rss.herokuapp.com/';
-export function renderCardLayout(card: CardBody, userId: string, markWord: string, level?: number) {
+export function renderCardLayout(card: CardBody, userId: string, markWord: string = '', level: number = 1) {
   let markHardWord: string = '';
   let btnHardDeleteSign: string = 'Сложное';
   let btnHardDeleteClass: string = 'button-hard';

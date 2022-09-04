@@ -47,20 +47,32 @@ function handlerListenets() {
   
 }
 
+async function checkIsDifficaltWord(wordId: string) {
+  const wordFromUsersWords = getUserWords(wordId) as Promise<CardBody>;
+  console.log(wordFromUsersWords);
+}
 
 export function renderTextbookPage(level: number, page: number, userId: string) {
   document.body.innerHTML = getTextbookPageLayout(level);
+  let markWord: string = '';
   const wordListLayout = <HTMLElement>document.querySelector('.body-words-list');
 
   if (level === 6) {
     const wordsList: Promise<Array<object>> = getUserWords(userId);
+    const difficultyHard: string = 'hard';
+    const difficultyLearned: string = 'learned';
     
     
     wordsList.then((arrayWords) => {
       arrayWords.forEach((item) => {
         const wordObject: { [index: string]: any } = item;
         const wordDifficalty: string = wordObject['difficulty'];
-        if (wordDifficalty === 'hard') {
+        if (wordDifficalty === difficultyHard || (wordDifficalty === difficultyLearned && wordDifficalty === difficultyHard)) {
+          if (wordDifficalty === difficultyLearned) {
+            markWord = 'learned'
+          } else {
+            markWord = '';
+          }
           const wordId: string = wordObject['wordId'];
           const word = getWord(wordId) as Promise<CardBody>;
           word.then((item) => {
@@ -85,7 +97,13 @@ export function renderTextbookPage(level: number, page: number, userId: string) 
     const wordsList = getWordsList(level, page);
     wordsList.then((list) => {
       list.forEach((word) => {
-        wordListLayout.insertAdjacentHTML('beforeend', renderCardLayout(word, userId, markWord));
+        const wordObject: { [index: string]: any } = word;
+        const wordID: string = wordObject['id'];
+        console.log(wordID);
+        const wordDifficult = checkIsDifficaltWord(wordID);
+
+
+        wordListLayout.insertAdjacentHTML('beforeend', renderCardLayout(word, userId, markWord, level));
       });
 
       handlerListenets();
