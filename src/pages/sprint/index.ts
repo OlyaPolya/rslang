@@ -212,6 +212,47 @@ function endSprint() {
   renderResult();
 };
 
+function renderResult() {
+  divResult.innerHTML = `
+    <h2 class="result-title">Твой результат: ${sprintPoints} очков! </h2>
+    <div class="result-wrapper">
+      <div class="uncorrect-answer">
+        <h3 class="uncorrect-title">Ошибок: ${unlearnedWords.length}</h3>      
+      </div>
+      <hr>
+      <div class="correct-answer">
+        <h3 class="correct-title">Правильно: ${learnedWords.length}</h3>
+      </div>
+    </div>
+    <div class="sprint-card_item answer">
+      <a href="./sprint.html"><div class="result-button">Играть ещё</div></a>
+      <a href="./index.html"><div class="result-button">Закрыть игру</div></a>
+    </div>
+  `;
+  main.append(divResult);
+  const uncorrectAnswer = <HTMLElement>document.querySelector('.uncorrect-answer');
+  const correctAnswer = <HTMLElement>document.querySelector('.correct-answer');
+  let uncorrectResult = '';
+  let correctResult = '';
+
+  unlearnedWords.forEach((item) => {
+    uncorrectResult += `<p class="result-item">
+    <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
+    <span class="result-word">${item.word}</span>  &mdash;  <span class="result-translate">${item.wordTranslate}</span>
+  </p>`
+  });
+
+  learnedWords.forEach((item) => {
+    correctResult += `<p class="result-item">
+    <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
+    <span class="result-word">${item.word}  </span>&mdash;<span class="result-translate">  ${item.wordTranslate}</span>
+  </p>`
+  });
+
+  uncorrectAnswer.insertAdjacentHTML('beforeend', uncorrectResult);
+  correctAnswer.insertAdjacentHTML('beforeend', correctResult); 
+};
+
 function addSwitchSound() {
   const switchSound =  <HTMLElement>document.querySelector('.svg-music');  
   switchSound.addEventListener('click', () => (audioAutoplay) ? audioAutoplay = false : audioAutoplay = true);

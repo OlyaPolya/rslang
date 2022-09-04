@@ -214,3 +214,77 @@ a {
 .correct {
   background: rgb(29, 158, 29);
 }
+
+/* Result */
+
+.result {
+  width: 60vw;
+  height: 82vh;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2);
+  background: rgb(255, 255, 255);
+}
+
+.result-wrapper {
+  height: 85%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(150, 150, 150) rgb(255, 255, 255);
+}
+
+.result-title {
+  color: rgb(85, 85, 85);
+  text-align: center;
+}
+
+.correct-title {
+  font-size: 1.5rem;
+  color: rgb(0, 180, 0);
+  padding: 10px 0;
+}
+
+.uncorrect-title  {
+  font-size: 1.5rem;
+  color: rgb(255, 0, 0);
+  padding: 10px 0;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+hr {
+  margin: 10px 0;
+  color: rgb(150, 150, 150);
+}
+
+.result-word {
+  color: rgb(0, 0, 145);
+  padding: 0 10px;
+  font-size: 1.5rem;
+}
+
+.result-translate {
+  color: rgb(140, 0, 140);
+  padding: 0 10px;
+  font-size: 1.3rem;
+}
+
+.result-button {
+  height: 35px;
+  border-radius: 3px;
+  padding: 5px 10px 0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: rgb(85, 85, 85);
+  border: 1px solid rgb(150, 150, 150);
+  background: rgb(255, 255, 255);
+}
+
+.result-button:active {
+  transform: scale(.95);
+}
