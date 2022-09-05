@@ -7,6 +7,7 @@ module.exports = {
     main: './src/pages/main/index.ts',
     sprint: './src/pages/sprint/index.ts',
     textbook: './src/pages/textbook/index.ts',
+    authorization: './src/pages/authorization/index.ts',
   },
   mode: 'development',
   devServer: {
@@ -56,14 +57,19 @@ module.exports = {
       filename: 'main.html',
     }),
     new HtmlWebpackPlugin({
-     chunks: ['textbook'],
-     template: './src/pages/textbook/index.html',
-     filename: 'textbook.html',
+      chunks: ['textbook'],
+      template: './src/pages/textbook/index.html',
+      filename: 'textbook.html',
     }),
     new HtmlWebpackPlugin({
       chunks: ['sprint'],
       template: './src/pages/sprint/index.html',
       filename: 'sprint.html',
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['authorization'],
+      template: './src/pages/authorization/index.html',
+      filename: 'authorization.html',
     }),
   ],
   resolve: {
