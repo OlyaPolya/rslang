@@ -10,16 +10,16 @@ export function getTextbookPageLayout(level: number) {
         <h3 class="dropdown">RS Lang</h3>
         <span class = "contener">
           <div class="dropdown">
-            <a onclick="changePage('src/pages/textbook/index.html')" class="dropbtn">Изучение слов</a>
+            <a href="https://olyapolya.github.io/rslang/textbook" class="dropbtn">Изучение слов</a>
           <div class="dropdown">
             <button class="dropbtn">Мини-игры</button>
             <div class="dropdown-content">
-              <a target="_blank" href="src/pages/sprint/index.html">Спринт</a>
-              <a target="_blank" href="src/pages/audio-call/index.html">Аудиовызов</a>
+              <a target="_blank" href="https://olyapolya.github.io/rslang/sprint">Спринт</a>
+              <a target="_blank" href="https://olyapolya.github.io/rslang/audio-call">Аудиовызов</a>
             </div>
           </div>
           <div class="dropdown">
-            <a href="src/pages/Our/index-about.html" class="dropbtn">О команде</a>
+            <a href="https://olyapolya.github.io/rslang/main#team" class="dropbtn">О команде</a>
           </div>
         </span>
     </div>
@@ -28,8 +28,8 @@ export function getTextbookPageLayout(level: number) {
     <div class="textbook">
     <div class="games">
           <ul class="games-list">
-            <li class="game game-audiocall" data-game="audiocall"><a href="#" class="link-audiocall">Аудиовызов</a></li>
-            <li class="game game-sprint" data-game="sprint"><a href="#" class="link-sprint">Спринт</a></li>
+            <li class="game game-audiocall" data-game="audiocall"><a href="https://olyapolya.github.io/rslang/sprint" class="link-audiocall">Аудиовызов</a></li>
+            <li class="game game-sprint" data-game="sprint"><a href="https://olyapolya.github.io/rslang/audio-call" class="link-sprint">Спринт</a></li>
         </ul>
     </div>
       <div class="textbook-menu"></div>
