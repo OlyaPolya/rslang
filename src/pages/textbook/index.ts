@@ -138,7 +138,7 @@ function showLoadingMessage() {
 function startApp() {
   localStorage.setItem('name', 'ol');
   localStorage.setItem('userId', '630f10e5806453001606499c');
-  localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGYxMGU1ODA2NDUzMDAxNjA2NDk5YyIsImlhdCI6MTY2MjM1ODY4MiwiZXhwIjoxNjYyMzczMDgyfQ.raWgzP-x_zx0azyUbTVeeDws_ggD16NInOi391kozTw');
+  localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGYxMGU1ODA2NDUzMDAxNjA2NDk5YyIsImlhdCI6MTY2MjM3NDI5NiwiZXhwIjoxNjYyMzg4Njk2fQ.B4aYS6QNHxN4zE0Ncg5HTw92TlhsOVV-cZMvSYxZdWA');
   localStorage.setItem(
     'refreshToken',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGYxMGU1ODA2NDUzMDAxNjA2NDk5YyIsInRva2VuSWQiOiIyMjMwNWY4MC1kZGNkLTQyNzEtYWJhOC00YmM5YWEzZWE0OTkiLCJpYXQiOjE2NjE5MzIwNzgsImV4cCI6MTY2MTk0ODI3OH0.G38waZSUm_ynQJIEZ9psJsn9_k2GfTN1XOiSRmtJ8Ro'

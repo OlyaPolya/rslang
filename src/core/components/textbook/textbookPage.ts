@@ -31,8 +31,8 @@ export function getTextbookPageLayout(level: number) {
     <div class="textbook">
     <div class="games">
           <ul class="games-list">
-            <li class="game game-audiocall" data-game="audiocall"><a href="#">Аудиовызов</a></li>
-            <li class="game game-sprint" data-game="sprint"><a href="#">Спринт</a></li>
+            <li class="game game-audiocall" data-game="audiocall"><a href="#" class="link-audiocall">Аудиовызов</a></li>
+            <li class="game game-sprint" data-game="sprint"><a href="#" class="link-sprint">Спринт</a></li>
         </ul>
     </div>
       <div class="textbook-menu"></div>

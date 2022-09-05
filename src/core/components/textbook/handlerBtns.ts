@@ -68,34 +68,29 @@ export function handlerBtnDelete() {
 export function checkIsAllWordsLearned(localStoragePage: number) {
   const allBtnslerned = document.querySelectorAll('.learned-mark__active');
   const flag = localStorage.getItem('flag');
-  const learnedPages = localStorage.getItem('learnedPages') as string;
-  // const arrayFromLearnedPages = learnedPages.split(',');  
+  const learnedPages = localStorage.getItem('learnedPages') as string; 
 
   if (allBtnslerned.length === 20) {
     const page = <HTMLElement>document.querySelector(`.page-${localStoragePage + 1}`);
+    const gameAudio = <HTMLElement>document.querySelector(`.game-audiocall`);
+    const gameSprint = <HTMLElement>document.querySelector(`.game-sprint`);
     page.style.background = '#ebf5f4';
+    gameSprint.style.background = '#ebf5f4';
+    gameAudio.style.background = '#ebf5f4';
+    gameSprint.style.pointerEvents = 'none';
+    gameAudio.style.pointerEvents = 'none';
 
     const cards = <NodeListOf<HTMLElement>>document.querySelectorAll('.card');
     cards.forEach((item) => {
        item.style.background = '#ebf5f4';
     })
     localStorage.setItem('flag', 'prev');
-    // localStorage.setItem('learnedPages', `${localStoragePage + 1}`);
+
 
   }
 
   if (allBtnslerned.length === 19 && flag === 'prev') {
     const pageToRemove = `${localStoragePage + 1}`;
-
-    // for ( let i = 0; i < arrayFromLearnedPages.length; i += 1) {
-    //   if (arrayFromLearnedPages[i] === pageToRemove) {
-    //     arrayFromLearnedPages.splice(i, 1);
-    //     const stringFromlearnedWords = arrayFromLearnedPages.join(',');
-    //     localStorage.setItem('learnedPages', `${stringFromlearnedWords}`);
-    //     break;
-    //   }
-    // }
-
     const { textbookPage, textbookLevel, userId } = getUserInfo();
     renderTextbookPage(textbookLevel, textbookPage, userId);
     localStorage.setItem('flag', 'none');

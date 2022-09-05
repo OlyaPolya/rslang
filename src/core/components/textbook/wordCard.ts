@@ -17,22 +17,7 @@ export interface CardBody {
 }
 
 
-// markWord = 'learnedHard';
-//         }
-//         if (learnedWords.includes(wordId)) {
-//           markWord = 'learned';
-//         }
-//         if (difficultWords.includes(wordId)) {
-//           markWord = 'hard';
-
-
-
-
 export const path = 'https://easy-english-rss.herokuapp.com/';
-
-
- //clickedElement.style.background = '#b3a27b';
- //clickedElement.disabled = true;
 
 export function renderCardLayout(card: CardBody, userId: string, markWord: string = '', level: number = 1) {
   let markHardWord: string = '';
