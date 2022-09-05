@@ -1,13 +1,14 @@
 import { playAudio } from '../../core/components/textbook/handleAudio';
 import '../../assets/styles/wordCard.scss';
-import { renderCardLayout, CardBody } from '../../core/components/textbook/wordCard';
-import '../../core/components/textbook/textbookPage';
-import { getWordsList, createUserWord, getUserWords, getUserWord, getWord } from '../../core/components/serverMethods/serverMethods';
-import { getTextbookPageLayout } from '../../core/components/textbook/textbookPage';
 import '../../assets/styles/textbookPage.scss';
 import '../../assets/styles/header.scss';
+import '../../core/components/textbook/textbookPage';
+import { renderCardLayout, CardBody } from '../../core/components/textbook/wordCard';
+import { getWordsList, createUserWord, getUserWords, getUserWord, getWord } from '../../core/components/serverMethods/serverMethods';
+import { getTextbookPageLayout } from '../../core/components/textbook/textbookPage';
 import { setBasicUserInfo, setUserInfo, getUserInfo, handleWordAsLearned } from '../../core/components/textbook/localStorage';
 import { handlerBtnHardWord, handlerBtnDelete, handlerBtnLearned, checkIsAllWordsLearned } from '../../core/components/textbook/handlerBtns';
+import './index.html';
 
 function handlerListenets() {
   const levelBtns = document.querySelectorAll('.part');
