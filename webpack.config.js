@@ -12,8 +12,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
     assetModuleFilename: 'assets/[name][hash][ext][query]',
+    filename: 'bundle.js',
     clean: true,
   },
   module: {
@@ -40,6 +40,7 @@ module.exports = {
         test: /.html$/i,
         loader: 'html-loader',
       }, 
+
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
