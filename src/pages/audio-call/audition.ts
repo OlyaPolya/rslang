@@ -32,7 +32,7 @@ interface Word {
    wrongAnswersArray = [];
    rightAnswerIndex = 0;
    wrongAnswersCount = 0;
-   let divDiff  = <HTMLElement>document.createElement('div');              /* Создаем модалку с выбором уровня */
+   divDiff  = <HTMLElement>document.createElement('div');              /* Создаем модалку с выбором уровня */
    divDiff.innerHTML = `
     <div class="overlay"></div>
     <div class="diff-wrapper">
@@ -56,13 +56,11 @@ interface Word {
   diffLevels.forEach((item) => item.addEventListener('click', startSprint));    /* навешиваем листнеры с функцией запуска игры на кнопки сложности */
   }
   
-  function startSprint(e : Event ) {                                     /* запуск игры */
-    diffGroup = +(e.target as HTMLElement).innerHTML;                            /* берем значение кнопок */                                                        
+  function startSprint(event : Event ) {                                     /* запуск игры */
+    diffGroup = +(event.target as HTMLElement).innerHTML;                            /* берем значение кнопок */                                                        
     divDiff.remove();                                           /* удаляем модалку с выборм сложности */
     getWords().then(startGame);                              /* запрашиваем список слов и запускаем игру*/  
-    /* далее запускаем игровые алгоритмы */
-    // timer(60);                                                  
-  }
+    }
   
   function getRandomNum (n : number) { 
     let randomNum : number;                                   /* получение рандомного числа */
