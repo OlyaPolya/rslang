@@ -9,7 +9,7 @@ document.body.insertAdjacentHTML("afterbegin", `
         <p><input type="email" name="email" class="input-email" value="">
         <label for="email">Введите свой e-mail</label></p>   
         <p><input type="password" name="password" class="input-password" value="" />
-        <label for="password">Минимум 8 символов</label></p>
+        <label for="password">Пароль(мин. 8 символов)</label></p>
         <p class="modal-button"><button class="register">Регистрирация</button>
         <button class="login">Войти</button></p>
     </div>    
@@ -72,7 +72,7 @@ async function signUp() {
 
     } else if (rawResponse.status == 417) alert('Пользователь уже существует!');
     else if (rawResponse.status == 422) alert('Неправильный e-mail или пароль!');
-    else alert('Произошла ошибка!');
+    else alert('Произошла ошибка! Попробуйте ещё раз!');
     const content = await rawResponse.json();
   
     console.log(content);      
@@ -92,17 +92,20 @@ async function signIn() {
       },
       body: JSON.stringify(user)
     });
-  const content = await rawResponse.json();
-  localStorage.setItem('name', content.name);
-  localStorage.setItem('userId', content.userId);
-  localStorage.setItem('token', content.token);
-  localStorage.setItem('refreshToken', content.refreshToken);
-  inputName.value = '';
-  inputEmail.value = '';
-  inputPassword.value = '';
-
-  closeModal();
-    
+    if (rawResponse.status == 200) {
+      const content = await rawResponse.json();
+      localStorage.setItem('name', content.name);
+      localStorage.setItem('userId', content.userId);
+      localStorage.setItem('token', content.token);
+      localStorage.setItem('refreshToken', content.refreshToken);
+      inputName.value = '';
+      inputEmail.value = '';
+      inputPassword.value = '';
+      alert(`Добро пожаловать, ${content.name}!`)
+      closeModal();
+    } else if (rawResponse.status == 403) alert('Неверный пароль!');
+    else if (rawResponse.status == 404) alert('Пользователь не найден!');
+    else alert('Произошла ошибка! Попробуйте ещё раз!');
   } catch(err) {
     
   };
