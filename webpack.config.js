@@ -33,13 +33,14 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
       {
-        test: /\.html$/i,
+        test: /.html$/i,
         loader: 'html-loader',
-      },
+      }, 
+
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
