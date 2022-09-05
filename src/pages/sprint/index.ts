@@ -1,5 +1,6 @@
 import './index.html';
 import './sprint.css';
+import music from './assets/audio.svg';
 
 interface Word {
   id: 'string';
@@ -40,7 +41,7 @@ divDiff.innerHTML = `
       <div class="diff-level">5</div>
       <div class="diff-level">6</div>
     </div>
-    <a href="./index.html"><div class="result-button">Закрыть игру</div></a>
+    <a href="https://olyapolya.github.io/rslang/main"><div class="result-button">Закрыть игру</div></a>
   </div>
 `;
 
@@ -69,7 +70,7 @@ divSet.innerHTML = `
       </g></g></svg>
   </div>
   <div class="set-item back">
-    <a href="./index.html">
+    <a href="https://olyapolya.github.io/rslang/main">
     <svg class="svg-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <defs><style>.cls-1{fill:#fff;opacity:0;}.cls-2{fill: #ffffff;}</style></defs><title>Закрыть игру</title>
       <g id="Layer_2" data-name="Layer 2"><g id="close"><g id="close-2" data-name="close"><rect class="cls-1" width="24" height="24" transform="translate(24 24) rotate(180)"/>
@@ -167,7 +168,7 @@ function renderSprint() {
     </div>
     <div class="sprint-card">
       <div class="sprint-card_item listen">
-        <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${word.audio}').play(); return false;">
+        <img class="svg-music" src="${music}" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${word.audio}').play(); return false;">
       </div>
       <div class="sprint-card_item word">${word.word}</div>
       <div class="sprint-card_item translate">${wordTranslate}</div>
@@ -246,8 +247,8 @@ function renderResult() {
       </div>
     </div>
     <div class="sprint-card_item answer">
-      <a href="./index.html"><div class="result-button">Играть ещё</div></a>
-      <a href="./index.html"><div class="result-button">Закрыть игру</div></a>
+      <a href="https://olyapolya.github.io/rslang/sprint"><div class="result-button">Играть ещё</div></a>
+      <a href="https://olyapolya.github.io/rslang/main"><div class="result-button">Закрыть игру</div></a>
     </div>
   `;
   main.append(divResult);
@@ -258,14 +259,14 @@ function renderResult() {
 
   unlearnedWords.forEach((item) => {
     uncorrectResult += `<p class="result-item">
-    <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
+    <img class="svg-music" src="${music}" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
     <span class="result-word">${item.word}</span>  &mdash;  <span class="result-translate">${item.wordTranslate}</span>
   </p>`;
   });
 
   learnedWords.forEach((item) => {
     correctResult += `<p class="result-item">
-    <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
+    <img class="svg-music" src="${music}" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
     <span class="result-word">${item.word}  </span>&mdash;<span class="result-translate">  ${item.wordTranslate}</span>
   </p>`;
   });
