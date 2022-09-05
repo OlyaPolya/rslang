@@ -19,13 +19,21 @@ export function setUserInfo(parametr: object) {
 export function setBasicUserInfo() {
   if (!('textbookPage' in localStorage)) {
     localStorage.setItem('textbookPage', '0');
-
-    if (!('textbookLevel' in localStorage)) {
-      localStorage.setItem('textbookLevel', '0');
-    }
-    if (!('userId' in localStorage)) {
-      localStorage.setItem('userId', 'none');
-    }
+  }
+  if (!('textbookLevel' in localStorage)) {
+    localStorage.setItem('textbookLevel', '0');
+  }
+  if (!('userId' in localStorage)) {
+    localStorage.setItem('userId', 'none');
+  }
+  if (!('learnedWords' in localStorage)) {
+    localStorage.setItem('learnedWords', 'none');
+  }
+  if (!('flag' in localStorage)) {
+    localStorage.setItem('flag', 'none');
+  }
+  if (!('learnedPages' in localStorage)) {
+    localStorage.setItem('learnedPages', '0');
   }
 }
 
@@ -39,4 +47,26 @@ export function getUserInfo() {
     textbookLevel: level,
     userId: userId,
   };
+}
+
+export function handleWordAsLearned(wordId: string) {
+  const wordsInStorage: string = localStorage.getItem('learnedWords') as string;
+  let learnedWords = wordsInStorage.split(',');
+  let isWasInLearnedWord = 0;
+
+  for (let i = 0; i < learnedWords.length; i += 1) {
+    if (learnedWords[i] === wordId) {
+      learnedWords.splice(i, 1);
+      const stringFromlearnedWords = learnedWords.join(',');
+      localStorage.setItem('learnedWords', `${stringFromlearnedWords}`);
+      isWasInLearnedWord = 1;
+      break;
+    }
+  }
+  
+  if (isWasInLearnedWord === 0) {
+    learnedWords.push(wordId);
+    const stringFromlearnedWords = learnedWords.join(',');
+    localStorage.setItem('learnedWords', `${stringFromlearnedWords}`);
+  }
 }

@@ -1,6 +1,6 @@
 import { createUserWord, deleteUserWord } from '../serverMethods/serverMethods';
-import {getUserInfo} from './localStorage'
-import {renderTextbookPage} from '../../../pages/textbook/index'
+import { getUserInfo, handleWordAsLearned } from './localStorage';
+import { renderTextbookPage} from '../../../pages/textbook/index';
 
 export function handlerBtnHardWord() {
   const userId: string = localStorage.getItem('userId') as string;
@@ -8,7 +8,10 @@ export function handlerBtnHardWord() {
     const allBtnsHard = document.querySelectorAll('.button-hard');
     allBtnsHard.forEach((btn) => {
       btn.addEventListener('click', (item) => {
-        const clickedElement = <HTMLElement>item.target;
+        const clickedElement = <HTMLButtonElement>item.target;
+        clickedElement.style.background = '#b3a27b';
+        clickedElement.disabled = true;
+        
         const parent = <HTMLElement>clickedElement.parentElement?.parentElement?.parentElement;
         const cardBody = parent.children;
         let cardTitleBlock: HTMLElement = clickedElement;
@@ -35,6 +38,7 @@ export function handlerBtnHardWord() {
         titleHardMark.classList.toggle('header-complicate-mark__active');
         const idWord = clickedElement.dataset?.idword as string;
         createUserWord(userId, idWord, 'hard');
+        //дисейбл
       })
     })
   }
@@ -61,16 +65,46 @@ export function handlerBtnDelete() {
 }
 
 
-function checkIsAllWordsLearned() {
+export function checkIsAllWordsLearned(localStoragePage: number) {
   const allBtnslerned = document.querySelectorAll('.learned-mark__active');
+  const flag = localStorage.getItem('flag');
+  const learnedPages = localStorage.getItem('learnedPages') as string;
+  // const arrayFromLearnedPages = learnedPages.split(',');  
+
   if (allBtnslerned.length === 20) {
-    console.log(' все слова изучены');
-    
+    const page = <HTMLElement>document.querySelector(`.page-${localStoragePage + 1}`);
+    page.style.background = '#ebf5f4';
+
+    const cards = <NodeListOf<HTMLElement>>document.querySelectorAll('.card');
+    cards.forEach((item) => {
+       item.style.background = '#ebf5f4';
+    })
+    localStorage.setItem('flag', 'prev');
+    // localStorage.setItem('learnedPages', `${localStoragePage + 1}`);
+
+  }
+
+  if (allBtnslerned.length === 19 && flag === 'prev') {
+    const pageToRemove = `${localStoragePage + 1}`;
+
+    // for ( let i = 0; i < arrayFromLearnedPages.length; i += 1) {
+    //   if (arrayFromLearnedPages[i] === pageToRemove) {
+    //     arrayFromLearnedPages.splice(i, 1);
+    //     const stringFromlearnedWords = arrayFromLearnedPages.join(',');
+    //     localStorage.setItem('learnedPages', `${stringFromlearnedWords}`);
+    //     break;
+    //   }
+    // }
+
+    const { textbookPage, textbookLevel, userId } = getUserInfo();
+    renderTextbookPage(textbookLevel, textbookPage, userId);
+    localStorage.setItem('flag', 'none');
   }
 }
 
 export function handlerBtnLearned() {
   const userId: string = localStorage.getItem('userId') as string;
+  const localStoragePage = Number(localStorage.getItem('textbookPage'));
   if (userId !== 'none') {
     const allBtnslerned = document.querySelectorAll('.button-learned');
 
@@ -101,10 +135,10 @@ export function handlerBtnLearned() {
           }
         }
         titleHardMark.classList.toggle('learned-mark__active');
-        console.log(titleHardMark);
         
         const idWord = clickedElement.dataset?.idword as string;
-        createUserWord(userId, idWord, 'learned');
+        handleWordAsLearned(idWord);
+        checkIsAllWordsLearned(localStoragePage); 
       });
     });
   }

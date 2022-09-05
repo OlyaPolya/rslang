@@ -1,12 +1,40 @@
 const backgroundPageBtnColor = [ '#E9C46A', '#F4A261', '#E76F51', '#2A9D8F', '#237a70', '#416979','#2f5564',]
- 
-
+import logo from '../../../assets/img/logo.png';
 
 export function getTextbookPageLayout(level: number) {
   const color: string = backgroundPageBtnColor[level];
   return `
+    <header class="header">
+    <div class="line">
+        <p class="dropdown"><img src="${logo}" alt="Логотип"></p>
+        <h3 class="dropdown">RS Lang</h3>
+        <span class = "contener">
+          <div class="dropdown">
+            <a onclick="changePage('src/pages/textbook/index.html')" class="dropbtn">Изучение слов</a>
+          <div class="dropdown">
+            <button class="dropbtn">Мини-игры</button>
+            <div class="dropdown-content">
+              <a target="_blank" href="src/pages/sprint/index.html">Спринт</a>
+              <a target="_blank" href="src/pages/audio-call/index.html">Аудиовызов</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="src/pages/Our/index-about.html" class="dropbtn">О команде</a>
+          </div>
+          <div class="dropdown">
+            <button class="button-input" ><a>Вход</a></button>
+          </div>
+        </span>
+    </div>
+  </header>
     <div class="wrapper">
     <div class="textbook">
+    <div class="games">
+          <ul class="games-list">
+            <li class="game game-audiocall" data-game="audiocall"><a href="#">Аудиовызов</a></li>
+            <li class="game game-sprint" data-game="sprint"><a href="#">Спринт</a></li>
+        </ul>
+    </div>
       <div class="textbook-menu"></div>
       <div class="textbook-parts">
         <div class="parts-list">
@@ -60,7 +88,9 @@ export function getTextbookPageLayout(level: number) {
           <span>↑</span>
           </div>
         </div>
-        <div class="body-loading"></div>
+        <div class="body-loading">
+        <span class="body-loading-sign">Загружаем...</span>
+        </div>
       </div>
     </div>
   </div>

@@ -15,20 +15,57 @@ export interface CardBody {
   textMeaningTranslate: string;
   textExampleTranslate: string;
 }
+
+
+// markWord = 'learnedHard';
+//         }
+//         if (learnedWords.includes(wordId)) {
+//           markWord = 'learned';
+//         }
+//         if (difficultWords.includes(wordId)) {
+//           markWord = 'hard';
+
+
+
+
 export const path = 'https://easy-english-rss.herokuapp.com/';
+
+
+ //clickedElement.style.background = '#b3a27b';
+ //clickedElement.disabled = true;
+
 export function renderCardLayout(card: CardBody, userId: string, markWord: string = '', level: number = 1) {
   let markHardWord: string = '';
   let btnHardDeleteSign: string = 'Сложное';
   let btnHardDeleteClass: string = 'button-hard';
+  let markLearnedWord: string = '';
+  let clickedHargBtn = '';
+  let disabled = '';
+
   if (level === 6) {
     markHardWord = 'header-complicate-mark__active';
     btnHardDeleteSign = 'Удалить';
     btnHardDeleteClass = 'button-delete';
   }
+  if (markWord === 'learnedHard') {
+    markHardWord = 'header-complicate-mark__active';
+    markLearnedWord = 'learned-mark__active';
+    clickedHargBtn = 'style="background-color:#b3a27b"';
+    disabled = 'disabled';
+  }
+  if (markWord === 'learned') {
+    markLearnedWord = 'learned-mark__active';
+  }
+  if (markWord === 'hard') {
+    markHardWord = 'header-complicate-mark__active';
+    clickedHargBtn = 'style="background-color:#b3a27b"';
+    disabled = 'disabled';
+  }
   let style: string = '';
   if (userId === 'none') {
     style = 'style="display:none"';
   }
+
   return `
   <div class="card" data-id="${card.id}">
     <div class="card-image">
@@ -41,7 +78,7 @@ export function renderCardLayout(card: CardBody, userId: string, markWord: strin
           <div class="title-header">
             <p class="header-word">${card.word}</p>
             <span class="header-complicate-mark ${markHardWord}">Сложное слово</span>
-            <span class="learned-mark">Изученное слово</span>
+            <span class="learned-mark ${markLearnedWord}">Изученное слово</span>
           </div>
           <div class="title-transcription">
             <p class="transcription-text">${card.transcription}</p>
@@ -72,7 +109,7 @@ export function renderCardLayout(card: CardBody, userId: string, markWord: strin
           <p class="example-translate">- ${card.textExampleTranslate}</p>
         </div>
         <div class="card-button" ${style}>
-          <button class="button ${btnHardDeleteClass}" data-idword="${card.id}">${btnHardDeleteSign}</button>
+          <button class="button ${btnHardDeleteClass}" data-idword="${card.id}" ${clickedHargBtn} ${disabled}>${btnHardDeleteSign}</button>
           <button class="button button-learned" data-idword="${card.id}">Изученное</button>
         </div>
         </div>
