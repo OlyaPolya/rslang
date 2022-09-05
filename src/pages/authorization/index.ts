@@ -1,3 +1,6 @@
+import '../authorization/authorization.css';
+import './index.html';
+
 document.body.insertAdjacentHTML("afterbegin", `
   <div class="overlay"></div>
   <div class="modal">

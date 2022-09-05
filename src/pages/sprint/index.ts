@@ -1,18 +1,21 @@
+import './index.html';
+import './sprint.css';
+
 interface Word {
-  "id": "string",
-  "group": "number",
-  "page": "number",
-  "word": "string",
-  "image": "string",
-  "audio": "string",
-  "audioMeaning": "string",
-  "audioExample": "string",
-  "textMeaning": "string",
-  "textExample": "string",
-  "transcription": "string",
-  "wordTranslate": "string",
-  "textMeaningTranslate": "string",
-  "textExampleTranslate": "string"  
+  id: 'string';
+  group: 'number';
+  page: 'number';
+  word: 'string';
+  image: 'string';
+  audio: 'string';
+  audioMeaning: 'string';
+  audioExample: 'string';
+  textMeaning: 'string';
+  textExample: 'string';
+  transcription: 'string';
+  wordTranslate: 'string';
+  textMeaningTranslate: 'string';
+  textExampleTranslate: 'string';
 }
 
 let diffGroup: number;
@@ -89,16 +92,16 @@ const divResult = document.createElement('div');
 divResult.classList.add('result');
 
 function startSprint(event: Event) {
-  diffGroup = +(event.target as HTMLElement).innerHTML;  
+  diffGroup = +(event.target as HTMLElement).innerHTML;
   console.log(`Сложность ${diffGroup}`);
-  for (let i=0; i<7; i++) {
+  for (let i = 0; i < 7; i++) {
     getWords();
-  };
+  }
   divDiff.remove();
   main.append(divTimer);
   runTimer(3);
   setTimeout(playSprint, 4000);
-};
+}
 
 function playSprint() {
   divTimer.remove();
@@ -107,57 +110,56 @@ function playSprint() {
   renderSprint();
   addSwitchSound();
   runTimer(60);
-  setTimeout(endSprint, 61000);  
-};
+  setTimeout(endSprint, 61000);
+}
 
 function getRandomNum(n: number) {
-  let randomNum: number =  Math.floor((Math.random() * n) + 1);
+  let randomNum: number = Math.floor(Math.random() * n + 1);
   return randomNum;
-};
+}
 
 async function getWords() {
   const response = await fetch(`https://easy-english-rss.herokuapp.com/words?group=${diffGroup - 1}&page=${getRandomNum(30)}`, {
     method: 'GET',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }    
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
   });
   const content = await response.json();
-  wordList = wordList.concat(content);  
+  wordList = wordList.concat(content);
 }
-
 
 // Timer
 
-function runTimer(time: number) {  
+function runTimer(time: number) {
   let i: number = 0;
   let finalOffset: number = 440;
-  let step: number = finalOffset/+time;
+  let step: number = finalOffset / +time;
   let timeCaption = <HTMLElement>document.querySelector('.value-timer');
   let circle = (<SVGGeometryElement>document.querySelector('.circle-animation')).style;
 
-  circle.strokeDashoffset = "0";
+  circle.strokeDashoffset = '0';
   timeCaption.innerText = time.toString();
 
-  let interval = setInterval( () => {
+  let interval = setInterval(() => {
     timeCaption.innerText = (time - i).toString();
-    if ( i++ == time ) {
-      clearInterval( interval );
-      } else {
+    if (i++ == time) {
+      clearInterval(interval);
+    } else {
       circle.strokeDashoffset = (step * i).toString();
-    };
-  }, 1000 );
-};
+    }
+  }, 1000);
+}
 
-function renderSprint() {  
+function renderSprint() {
   console.log(`Количество слов ${wordList.length}`);
-  let word = wordList[getRandomNum(120)]
+  let word = wordList[getRandomNum(120)];
   let wordTranslate: string;
   let isRightAnswer = getRandomNum(2);
-  if (isRightAnswer === 1) wordTranslate = word.wordTranslate
+  if (isRightAnswer === 1) wordTranslate = word.wordTranslate;
   else wordTranslate = wordList[getRandomNum(120)].wordTranslate;
-  
+
   divSprint.innerHTML = `
     <div class="sprint-points">
       <div class="added-points">+${addedPoints}</div>
@@ -189,12 +191,12 @@ function renderSprint() {
       learnedWords.push(word);
       playSound('./assets/true.mp3');
       sprintPoints += addedPoints;
-      countCorrectAnswers +=1
+      countCorrectAnswers += 1;
       if (countCorrectAnswers === 3) {
         addedPoints = 20;
       } else if (countCorrectAnswers === 6) {
         addedPoints = 40;
-      }else if (countCorrectAnswers === 9) {
+      } else if (countCorrectAnswers === 9) {
         addedPoints = 80;
       }
     }
@@ -210,26 +212,26 @@ function renderSprint() {
       learnedWords.push(word);
       playSound('./assets/true.mp3');
       sprintPoints += addedPoints;
-      countCorrectAnswers +=1
+      countCorrectAnswers += 1;
       if (countCorrectAnswers === 3) {
         addedPoints = 20;
       } else if (countCorrectAnswers === 6) {
         addedPoints = 30;
       } else if (countCorrectAnswers === 9) {
         addedPoints = 80;
-      }      
+      }
     }
   });
 
   btnAnswer.forEach((item) => item.addEventListener('click', renderSprint));
-};
+}
 
 function endSprint() {
   playSound('./assets/timeOut.mp3');
   divSet.remove();
   divSprint.remove();
   renderResult();
-};
+}
 
 function renderResult() {
   divResult.innerHTML = `
@@ -258,24 +260,24 @@ function renderResult() {
     uncorrectResult += `<p class="result-item">
     <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
     <span class="result-word">${item.word}</span>  &mdash;  <span class="result-translate">${item.wordTranslate}</span>
-  </p>`
+  </p>`;
   });
 
   learnedWords.forEach((item) => {
     correctResult += `<p class="result-item">
     <img class="svg-music" src="./assets/audio.svg" alt="Прослушать" onclick="new Audio('https://easy-english-rss.herokuapp.com/${item.audio}').play(); return false;">
     <span class="result-word">${item.word}  </span>&mdash;<span class="result-translate">  ${item.wordTranslate}</span>
-  </p>`
+  </p>`;
   });
 
   uncorrectAnswer.insertAdjacentHTML('beforeend', uncorrectResult);
-  correctAnswer.insertAdjacentHTML('beforeend', correctResult); 
-};
+  correctAnswer.insertAdjacentHTML('beforeend', correctResult);
+}
 
 function addSwitchSound() {
-  const switchSound =  <HTMLElement>document.querySelector('.svg-music');  
-  switchSound.addEventListener('click', () => (audioAutoplay) ? audioAutoplay = false : audioAutoplay = true);
-};
+  const switchSound = <HTMLElement>document.querySelector('.svg-music');
+  switchSound.addEventListener('click', () => (audioAutoplay ? (audioAutoplay = false) : (audioAutoplay = true)));
+}
 
 function playSound(path: string) {
   const audio = new Audio();

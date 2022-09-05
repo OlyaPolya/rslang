@@ -21,9 +21,6 @@ export function getTextbookPageLayout(level: number) {
           <div class="dropdown">
             <a href="src/pages/Our/index-about.html" class="dropbtn">О команде</a>
           </div>
-          <div class="dropdown">
-            <button class="button-input" ><a>Вход</a></button>
-          </div>
         </span>
     </div>
   </header>
