@@ -19,7 +19,7 @@ document.body.insertAdjacentHTML("afterbegin", `
 let inputName = (<HTMLInputElement>document.querySelector('.input-name'));
 let inputEmail = (<HTMLInputElement>document.querySelector('.input-email'));
 let inputPassword = (<HTMLInputElement>document.querySelector('.input-password'));
-const authorization = <HTMLElement>document.querySelector('.authorization');  
+const authorization = <HTMLElement>document.querySelector('.button-input');  
 const modal = <HTMLElement>document.querySelector('.modal');
 const overlay = <HTMLElement>document.querySelector('.overlay');
 const login = <HTMLElement>document.querySelector('.login');
