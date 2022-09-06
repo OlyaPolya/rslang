@@ -1,7 +1,7 @@
 // import "./../../assets/styles/audition.scss"
 
 import "./index.html";
-import "./audition.css";
+import "./audition.css"
 
 
 interface Word {
@@ -49,7 +49,7 @@ interface Word {
         <div class="diff-level">5</div>
         <div class="diff-level">6</div>
       </div>
-      <button class="diff-back"><a href="./index.html">Выбрать другую игру</a></button>
+      <button class="diff-back"><a href="https://olyapolya.github.io/rslang/main">Выбрать другую игру</a></button>
     </div>
   `;
   

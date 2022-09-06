@@ -8,6 +8,7 @@ module.exports = {
     sprint: './src/pages/sprint/index.ts',
     textbook: './src/pages/textbook/index.ts',
     authorization: './src/pages/authorization/index.ts',
+    audiocall: './src/pages/audio-call/audition.ts',
   },
   mode: 'development',
   devServer: {
