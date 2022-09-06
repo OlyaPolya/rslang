@@ -1,4 +1,8 @@
-import "./../../assets/styles/audition.scss"
+// import "./../../assets/styles/audition.scss"
+
+import "./index.html";
+import "./audition.css";
+
 
 interface Word {
     "id": "string",
@@ -106,6 +110,9 @@ interface Word {
   console.log(wrongAnswersArray);
   }
   
+
+  const check = document.getElementById("check");
+  check!.addEventListener('click', onNext);
   function onNext () {                                                       /* нажатие кнопки check*/
     let selectedIndex = 0;
     for (let i=1; i <= 4; i++){ 
@@ -126,6 +133,7 @@ interface Word {
        wrongAnswersCount++; 
       }    
   }
+  
   
   function nextWord () {
     if (wordIndex < wordList.length-20){
@@ -163,6 +171,8 @@ interface Word {
   return wrongWord;
   }
   
+  const sound = document.getElementById("sound");
+  sound!.addEventListener('click', playAudio);
   
   function playAudio(){
     let word = wordList[wordIndex-1];
@@ -172,6 +182,7 @@ interface Word {
     myAudio.play();
     console.log(word.audio);
   }
+ 
   
   function clearSelection () {
     const input1 = document.getElementById('word1Selected') as HTMLInputElement;
